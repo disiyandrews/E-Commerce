@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <title>TIᗰE ᘔOᑎE</title>
+
+
+
+</head>
+<style>
+  .main-navbar {
+
+    border-bottom: 1px solid #ccc;
+  }
+
+  .main-navbar .top-navbar {
+    background-color: #caced4;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .main-navbar .top-navbar .brand-name {
+    color: #0d0c0c;
+  }
+
+  .main-navbar .top-navbar .nav-link {
+    color: #0d0d0d;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .main-navbar .top-navbar .dropdown-menu {
+    padding: 0px 0px;
+    border-radius: 0px;
+  }
+
+  .main-navbar .top-navbar .dropdown-menu .dropdown-item {
+    padding: 8px 16px;
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
+  }
+
+  .main-navbar .top-navbar .dropdown-menu .dropdown-item i {
+    width: 20px;
+    text-align: center;
+    color: #ccd3dd;
+    font-size: 14px;
+  }
+
+  .main-navbar .navbar {
+    padding: 0px;
+    background-color: #ddd;
+  }
+
+  .main-navbar .navbar .nav-item .nav-link {
+    padding: 8px 20px;
+    color: #000;
+    font-size: 15px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .main-navbar .top-navbar .nav-link {
+      font-size: 12px;
+      padding: 8px 10px;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  footer-underline {
+    height: 1px;
+    width: 70px;
+    background-color: #ddd;
+    margin: 10px 0px;
+
+  }
+
+  .list {
+
+    text-align: center;
+
+  }
+
+  .list a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+  }
+
+  h6 {
+
+    text-align: center;
+    color: rgb(181, 158, 203);
+  }
+
+  .socials {
+    text-align: center;
+
+  }
+
+  .copyryt {
+    text-align: center;
+  }
+
+  body {
+
+    overflow-x: hidden;
+    /* Hide horizontal scrollbar */
+  }
+
+  .card img {
+    transition: opacity 0.5s, transform 0.5s;
+  }
+
+  .card img:hover {
+    opacity: 0.7;
+    transform: scale(1.1) translateZ(50px);
+  }
+
+  .thumbnail img {
+    transition: opacity 0.5s, transform 0.5s;
+  }
+
+  .thumbnail img:hover {
+    opacity: 0.7;
+    transform: scale(1.1) translateZ(50px);
+  }
+  .thank-you-message {
+    display: none;
+    text-align: center;
+    font-size: 24px;
+    color: green;
+    font-weight: bold;
+    margin-top: 20px;
+}
+</style>
+
+<body style="background-color: rgb(220, 194, 154);" class="d-flex flex-column min-vh-100">
+
+  
+
+<form method="post" action="{% url 'home' %}" >
+    <div class="main-navbar shadow-sm sticky-top">
+        <div class="top-navbar">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
+    
+                <h5 class="brand-name">TIᗰE ᘔOᑎE</h5>
+              </div>
+              <div class="col-md-5 my-auto">
+                <form role="search">
+                  <div class="input-group">
+                    <input type="search" placeholder="Search your product" class="form-control" />
+                    <button class="btn bg-white" type="submit">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-5 my-auto">
+                <ul class="nav justify-content-end">
+    
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'userpanel' %}">
+                      <i class="fa fa-shopping-cart"></i> Home
+                    </a>
+                  </li>
+    
+                  <li class="nav-item">
+                    <div class="position-relative d-inline-block">
+                        <a class="nav-link" href="{% url 'cart' %}">
+                            <i class="fa fa-shopping-cart"></i> Cart
+                        </a>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-left: -10px;">
+                            {{ cart|length }}
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </div>
+                </li>
+                
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Account
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'logout' %}">LogOut</a></li>
+                      
+                      
+                    </ul>
+                  </li>
+                      
+                    </li>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+              <a class="navbar-brand d-block d-sm-block d-md-none d-lg-none" href="">
+                TIᗰE ᘔOᑎE
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Category </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% for c in category %}
+                        <li><a class="dropdown-item" href="{% url 'category_detail' c.id %}">{{ c.category_name }}</a></li>
+                        {% endfor %}
+                      </ul>
+                    </li>
+                  
+                  
+      
+                  
+                      
+                      
+                    </ul>
+                  </li>
+      
+                </ul>
+              </div>
+            </div>
+          </nav>
+      </div>
+
+
+
+
+
+
+
+
+      <h1 class="text-center">Cart</h1>
+      <div class="container">
+          <div class="table-responsive">
+              <table class="table table-striped table-bordered table-success table-hover">
+                  <thead>
+                      <tr>
+                          <th scope="col">Product Image</th>
+                          <th scope="col">Product Name</th>
+                          <th scope="col">Description</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Quantity</th>
+                          <th scope="col">Sub Total</th>
+                          <th scope="col">Remove</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for c in cart %}
+                      {% if c.user.id == user.id %}
+                      <tr>
+                          <td><img src="{{ c.prod.primg.url }}" width="60px"></td>
+                          <td>{{ c.prod.prname }}</td>
+                          <td>{{ c.prod.prdesc }}</td>
+                          <td>{{ c.prod.prprice }}</td>
+                          <td>
+                              <a href="{% url 'decrement_quantity' c.id %}" class="btn btn-danger"><b>-</b></a>
+                              &nbsp {{ c.quantity }} &nbsp
+                              <a href="{% url 'increment_quantity' c.id %}" class="btn btn-success"><b>+</b></a>
+                          </td>
+                          <td>{{ c.subtotal }}</td>
+                          <td>
+                              <a class="btn btn-danger" href="{% url 'remove' c.id  %}">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                      <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06l-.5-8.5a.5.5 0 0 1 .47-.53zm4.954.47a.5.5 0 0 0-.47-.53.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.06l.5-8.5z"/>
+                                  </svg>
+                              </a>
+                          </td>
+                      </tr>
+                      {% endif %}
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      <h2 class="text-center">Total: {{ ttl }}</h2>
+  
+      <!-- Checkout Modal -->
+      <div class="text-center">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+              Checkout
+          </button>
+      </div>
+      
+      <!-- Thank You Message -->
+      <div class="thank-you-message" id="thankYouMessage">Thank you....Your Order Was Placed Successfully...!</div>
+  
+      <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="checkoutModalLabel">Checkout</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <form id="checkoutForm" method="post">
+                          {% csrf_token %}
+                          
+                          <div class="mb-3">
+                              <label for="payment" class="form-label">Payment Method</label>
+                              <select class="form-select" id="payment" name="payment" required>
+                                  <option value="credit">Credit Card</option>
+                                  <option value="debit">Debit Card</option>
+                                  <option value="cod">Cash on Delivery</option>
+                              </select>
+                          </div>
+                          <div class="mb-3">
+                              <label for="total" class="form-label">Total Amount</label>
+                              <input type="text" class="form-control" id="total" name="total" readonly value="{{ ttl }}">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Place Order</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+      
+  
+      <script>
+          document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+              e.preventDefault(); // Prevents actual form submission
+  
+              // Close modal
+              var checkoutModal = document.getElementById('checkoutModal');
+              var modal = bootstrap.Modal.getInstance(checkoutModal);
+              modal.hide();
+  
+              // Show thank you message
+              document.getElementById('thankYouMessage').style.display = 'block';
+          });
+      </script>
+  
+    
+
+
+  </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <!-- adding footer -->
+    
+    
+      <footer class="bg-dark text-light  py-3 mt-3 ">
+        <div style="height: 100%;">
+    
+    
+    
+          <div class="row m-5">
+    
+            <div class="col-md-3">
+              <h6 class="footer-heading">Collections</h6>
+              <div class="footer-underline"></div> <br>
+              <div class="list" style="font-size: small;">
+                <div class="mb-2"><a href="" class="text-white">Automations</a></div>
+                <div class="mb-2"><a href="" class="text-white">SmartWatches</a></div>
+                <div class="mb-2"><a href="" class="text-white">Branded</a></div>
+                <div class="mb-2"><a href="" class="text-white">Premium</a></div>
+    
+              </div>
+            </div>
+    
+            <div class="col-md-3">
+              <h6 class="footer-heading">Customer Service</h6>
+              <div class="footer-underline"></div><br>
+              <div class="list" style="font-size: small;">
+                <div class="mb-2"><a href="" class="text-white">Payment Options</a></div>
+                <div class="mb-2"><a href="" class="text-white">Track Order</a></div>
+                <div class="mb-2"><a href="" class="text-white">Encircle Program</a></div>
+                <div class="mb-2"><a href="" class="text-white">Find World Stores</a></div>
+              </div>
+            </div>
+    
+            <div class="col-md-3">
+              <h6 class="footer-heading">Contact Us</h6>
+              <div class="footer-underline"></div><br>
+              <div class="list" style="font-size: small;">
+                <div class="mb-2"><a href="" class="text-white">123-456-789</a></div>
+                <div class="mb-2"><a href="" class="text-white">Timezone@gmail.com</a></div>
+                <div class="mb-2"><a href="" class="text-white">Help & Contact</a></div>
+                <div class="mb-2"><a href="" class="text-white">FAQs</a></div>
+    
+              </div>
+            </div>
+    
+            <div class="col-md-3">
+              <h6 class="footer-heading">About TimeZone</h6>
+              <div class="footer-underline"></div><br>
+              <div class="list" style="font-size: small;">
+                <div class="mb-2"><a href="" class="text-white">Brand Protection</a></div>
+                <div class="mb-2"><a href="" class="text-white">Corporate</a></div>
+                <div class="mb-2"><a href="" class="text-white">Careers</a></div>
+                <div class="mb-2"><a href="" class="text-white">Blog</a></div>
+    
+              </div>
+            </div>
+    
+    
+          </div>
+    
+    
+    
+    
+          <div class="row">
+            <div class="socials">
+    
+              <a href=""><img src="/static/images/facebook1.png" alt="" width="30" height="30"></a>&nbsp;&nbsp;
+              <a href=""><img src="/static/images/insa1.png" alt="" width="40" height="30"></a>
+              <a href=""><img src="/static/images/twitter1-removebg-preview.png" alt="" width="50" height="50"></a>
+              <a href=""><img src="/static/images/youtube1-removebg-preview.png" alt="" width="60" height="65"></a>
+            </div>
+            <div class="copyryt">
+              <p>&copy; 2024 Time Zone Company Limited. All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;|
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                Terms & Conditions&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; Privacy Policy&nbsp;&nbsp;&nbsp;&nbsp;
+                |&nbsp;&nbsp;&nbsp;&nbsp; Wearable Privacy Policy</p>
+            </div>
+          </div>
+    
+    
+      </footer>
+</form>
+
+
+
+</body>
+
+</html>
